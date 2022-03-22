@@ -6,6 +6,7 @@ const staticName = ({ user, time }) => {
   return (
     <div>
       {username}
+      <hr></hr>
       {time}
     </div>
   );
@@ -13,10 +14,9 @@ const staticName = ({ user, time }) => {
 
 export const getStaticProps = async ({ params }) => {
   try {
-    const res = await fetch(`https://api.github.com/users/${params.staticName}`);
+    const res = await fetch(`https://api.github.com/users/${params.name}`);
     if (res.status === 200) {
       const user = await res.json();
-      console.log("2: ", user);
       return { props: { user, time: new Date().toISOString() } };
     }
     return { props: { time: new Date().toISOString() } };

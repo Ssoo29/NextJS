@@ -17,7 +17,7 @@ const App = () => {
         <a>검색하기</a>
       </Link>
       <p>static page 이동</p>
-      <Link href={'/static'}>
+      <Link href={`/static/jerrynim`}>
         <a>static page</a>
       </Link>
     </div>
