@@ -3,6 +3,7 @@ import fetch from "isomorphic-unfetch";
 import css from "styled-jsx/css";
 import Profile from "../../components/Profile";
 import formatDistance from "date-fns/formatDistance";
+import Respository from "../../components/Repositories";
 
 const style = css`
   .user-contents-wrapper {
@@ -70,34 +71,7 @@ const name = ({ user, repos }) => {
   return (
     <div className="user-contents-wrapper">
       <Profile user={user} />
-      <div className="repos-wrapper">
-        <span className="repos-header">
-          Repositores
-          <span className="repos-count">{user.public_repos}</span>
-          {user &&
-            repos &&
-            repos.map((repo) => (
-              <div key={repo.id} className="repository-wrapper">
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`https://github.com/${user.login}/${repo.name}`}
-                >
-                  <h2 className="repository-name">{repo.name}</h2>
-                </a>
-                <p className="repository-description">{repo.description}</p>
-                <p className="repository-language">
-                  {repo.language}
-                  <span className="repository-updated-at">
-                    {formatDistance(new Date(repo.updated_at), new Date(), {
-                      addSuffix: true,
-                    })}
-                  </span>
-                </p>
-              </div>
-            ))}
-        </span>
-      </div>
+      <Respository user={user} repos={repos}></Respository>
       <style jsx>{style}</style>
     </div>
   );
