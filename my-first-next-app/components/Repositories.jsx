@@ -1,3 +1,4 @@
+import React from "react";
 import css from "styled-jsx/css";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -93,7 +94,7 @@ const Respository = ({ user, repos }) => {
           <span className="repos-count">{user.public_repos}</span>
         </div>
         {repos.map((repo) => (
-          <div className="repository-wrapper">
+          <div key={repo.id} className="repository-wrapper">
             <a
               target="_blank"
               rel="noopener noreferrer"
